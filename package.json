@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
     "build": "webpack --config webpack.config.prod.babel.js",
-    "prettier": "prettier --write {src/**/*,*}.{js,jsx}"
+    "prettier": "prettier --write {src/**/*,*}.{js,jsx}",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "http://richpull.github.io/taxnext",
   "author": "Bulat Sharipov",
   "license": "MIT",
   "browserslist": [
@@ -44,6 +47,7 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "file-loader": "^3.0.1",
+    "gh-pages": "^2.2.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "imagemin-webpack-plugin": "^2.4.2",

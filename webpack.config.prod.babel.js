@@ -11,7 +11,7 @@ import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, './dist'),
+  dist: path.join(__dirname, './build'),
   assets: 'assets/',
 };
 
@@ -84,12 +84,14 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'src/img', to: 'assets/img' },
       { from: 'src/styles/font/', to: `${PATHS.assets}/font` },
+      { from: 'data', to: 'data' },
+      { from: 'src/404/', to: '' }
     ]),
     //new webpack.SourceMapDevToolPlugin({
     //  filename: '[name].js.map',
     //  exclude: ['bundle.js'],
     //}),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([PATHS.dist]),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
       chunkFilename: '[id].[hash].styles',

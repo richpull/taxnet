@@ -3,7 +3,8 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { hasMoviesBookmarks, toggleMoviesBookmarks } from '../../services/bookmarks';
 import Tag from '../tag';
 import PropTypes from 'prop-types';
-const MovesItem = ({ location, payload, id }) => {
+import {connect} from "react-redux";
+const MovesItem = ({ location, payload, id, bookmarks = [] }) => {
   const { title, tags } = payload;
   let { search } = location;
   const moviesLink = `/film/${id}`;
@@ -45,7 +46,7 @@ const MovesItem = ({ location, payload, id }) => {
             );
           }}
         >
-          {hasMoviesBookmarks(id) ? (
+          { bookmarks.find( item => item.id == id ) ? (
             <i className="icon-bookmark" />
           ) : (
             <i className="icon-bookmark-empty" />
@@ -64,5 +65,13 @@ MovesItem.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
+  bookmarks : PropTypes.arrayOf(
+    PropTypes.shape({
+      id : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    })
+  ).isRequired
 };
-export default withRouter(MovesItem);
+const mapStateToProps = state => ({
+  bookmarks: state.bookmarks.movies,
+});
+export default connect(mapStateToProps)(withRouter(MovesItem));

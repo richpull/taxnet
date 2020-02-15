@@ -7,7 +7,7 @@ import { store } from './store';
 
 render(
   <Provider store={store}>
-    <Router>
+    <Router basename="/taxnet">
       <App />
     </Router>
   </Provider>,

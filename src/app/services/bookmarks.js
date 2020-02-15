@@ -21,7 +21,7 @@ export const toggleMoviesBookmarks = (bookmark, id) => {
 export const removeMoviesBookmarks = id => {
   const state = LocalStore.get();
   const { moviesBookmarks } = state;
-  let update = moviesBookmarks.filter(item => item.id !== id);
+  let update = moviesBookmarks.filter(item => item.id != id);
   store.dispatch(
     getMoviesBookmarksDataSuccess(
       LocalStore.set({ ...state, moviesBookmarks: update }, 'moviesBookmarks'),

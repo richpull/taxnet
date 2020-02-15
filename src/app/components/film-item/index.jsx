@@ -8,12 +8,12 @@ import {
 } from '../../services/bookmarks';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
-
 const FilmItem = ({
   match: {
     params: { id },
   },
   movies: { moviesCollection = [], isFetching },
+  bookmarks
 }) => {
   const { title = false } = moviesCollection[id] || {};
   if (isFetching) {
@@ -26,13 +26,13 @@ const FilmItem = ({
     <div className="film">
       <div className="film__poster__box">
         <div className="film-poster">
-          <img src="/img/poster.png" alt="Poster" />
+          <img src="/taxnet/assets/img/poster.png" alt="Poster" />
         </div>
       </div>
       <div className="film__info">
         <div className="film-title">{title}</div>
         <div className="film-poster-action">
-          {hasMoviesBookmarks(id) ? (
+          {bookmarks.find( item => item.id == id ) ? (
             <button
               className="button"
               onClick={() => {
@@ -77,6 +77,11 @@ FilmItem.propTypes = {
       }),
     ),
   }).isRequired,
+  bookmarks : PropTypes.arrayOf(
+    PropTypes.shape({
+      id : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    })
+  ).isRequired
 };
 const mapStateToProps = state => ({
   movies: state.movies,
