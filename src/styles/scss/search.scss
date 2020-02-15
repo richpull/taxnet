@@ -1,0 +1,55 @@
+@import "utils/vars";
+@import "utils/mixins";
+.search-form{
+  display: block;
+}
+.search{
+  display: flex;
+  margin-bottom: 12px;
+}
+.search__control{
+  width: 100%;
+  @include placeholder {
+    color: #8f8f8f;
+  }
+  &:focus{
+    @include placeholder {
+      color: #000;
+    }
+  }
+}
+.search__control, .search__submit{
+  height: 58px;
+  background: none;
+  border: 1px solid #707070;
+  @media screen and (max-width: $smTableWidth) {
+    height: 48px;
+  }
+}
+.search__control{
+  font-size: 25px;
+  padding: 0 33px;
+  @media screen and (max-width: $smTableWidth) {
+    font-size: 20px;
+    padding: 0 15px;
+  }
+}
+.search__submit{
+  padding: 0 26px;
+  font-size: 26px;
+  color: #6f6f6f;
+  line-height: 0;
+  cursor: pointer;
+  border-left-width: 0;
+  i{
+    vertical-align: middle;
+    display: inline-block;
+  }
+  &:hover{
+    background: #b2b2b2;
+    color: #fff;
+  }
+  @media screen and (max-width: $smTableWidth) {
+    font-size: 20px;
+  }
+}

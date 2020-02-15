@@ -1,0 +1,32 @@
+@import "utils/vars";
+@import "utils/mixins";
+.nav{
+  margin-bottom: 37px;
+  text-align: center;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+}
+.nav__link{
+  flex-basis: 270px;
+  min-width: 0;
+  text-align: center;
+  line-height: 1;
+  height: 54px;
+  border: 1px solid #707070;
+  font-size: 18px;
+  color: #b2b2b2;
+  padding: 16px 14px;
+  text-decoration: none;
+  flex-shrink: 2;
+  span{
+    @extend %ellipsis;
+  }
+  &:not(:last-child){
+    border-right-width: 0;
+  }
+}
+.nav__link:hover, .nav__link-isActive{
+  background: #b2b2b2;
+  color: #fff;
+}
