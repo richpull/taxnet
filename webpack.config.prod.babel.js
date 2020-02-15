@@ -8,6 +8,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import webpack from "webpack";
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -87,6 +88,11 @@ module.exports = {
       { from: 'data', to: 'data' },
       { from: 'src/404/', to: '' }
     ]),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'API_DATA_URL': JSON.stringify('data')
+      }
+    }),
     //new webpack.SourceMapDevToolPlugin({
     //  filename: '[name].js.map',
     //  exclude: ['bundle.js'],

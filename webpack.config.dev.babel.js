@@ -102,6 +102,11 @@ module.exports = {
       { from: 'src/styles/font/', to: 'font' },
       { from: 'data', to: 'data' },
     ]),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'API_DATA_URL': JSON.stringify('/data')
+      }
+    }),
     // new webpack.SourceMapDevToolPlugin({
     //   filename: '[name].js.map',
     //   exclude: ['bundle.js'],
