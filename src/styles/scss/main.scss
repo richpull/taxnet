@@ -3,6 +3,7 @@
 @import "utils/reset";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=cyrillic');
 @import url('../css/fontello.css');
+@import 'button';
 img{
   max-width: 100%;
   height: auto;
@@ -133,6 +134,7 @@ a{
   display: flex;
   padding: 14px 25px 14px 32px;
   border: 1px solid #707070;
+  min-height: 60px;
   @media screen and (max-width: $tableWidth) {
     padding-left: 15px;
     padding-right: 15px;
@@ -257,91 +259,7 @@ a{
     padding-top: 45px;
   }
 }
-.button{
-  display: inline-block;
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
-  vertical-align: middle;
-  text-align: center;
-  height: 60px;
-  padding: 16px 32px;
-  font-size: 18px;
-  color: #fff;
-  background: #707070;
-  font-weight: 300;
-  max-width: 100%;
-  border-radius: 5px;
-  span{
-    @extend %ellipsis;
-    max-width: 100%;
-  }
-  i, span{
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
-  }
-  &:hover{
-    opacity: 0.7;
-  }
-  @media screen and (max-width: $tableWidth) {
-    height: 45px;
-    padding: 5px 15px;
-    font-size: 16px;
-  }
-}
-.button-bookmark{
-  display: inline-block;
-  vertical-align: middle;
-  background: none;
-  border: 0;
-  padding: 0 1px;
-  cursor: pointer;
-  color: #6f6f6f;
-  text-align: center;
-  line-height: 0;
-  font-size: 23px;
-  &:hover{
-    color: #a7a7a7;
-  }
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
-  }
-}
-.button-back{
-  display: inline-block;
-  @extend %ellipsis;
-  border: 0;
-  background: none;
-  font-size: 35px;
-  color: #727272;
-  cursor: pointer;
-  i{
-    font-size: 44px;
-  }
-  i, span{
-    display: inline-block;
-    vertical-align: middle;
-    &:first-child{
-      padding-right: 12px;
-    }
-  }
-  &:hover{
-    color: #000;
-  }
-  @media screen and (max-width: 1480px) {
-    font-size: 25px;
-    i{
-      font-size: 32px;
-    }
-  }
-  @media screen and (max-width: $smTableWidth) {
-    font-size: 20px;
-    i{
-      font-size: 27px;
-    }
-  }
-}
+
 .alert{
   padding: 10px 20px;
   border: 1px solid #ccc;

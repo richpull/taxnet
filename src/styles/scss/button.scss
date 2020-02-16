@@ -1,0 +1,91 @@
+@import "utils/vars";
+@import "utils/mixins";
+.button{
+  display: inline-block;
+  border: 1px solid #707070;
+  text-decoration: none;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  height: 60px;
+  padding: 16px 32px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #707070;
+  font-weight: 300;
+  max-width: 100%;
+  border-radius: 5px;
+  span{
+    @extend %ellipsis;
+    max-width: 100%;
+  }
+  i, span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+  }
+  &:hover{
+    opacity: 0.7;
+  }
+  @media screen and (max-width: $tableWidth) {
+    height: 45px;
+    padding: 5px 15px;
+    font-size: 16px;
+  }
+}
+.button_light{
+  background-color: #fff;
+  color: #707070;
+}
+.button-bookmark{
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  border: 0;
+  padding: 0 1px;
+  cursor: pointer;
+  color: #6f6f6f;
+  text-align: center;
+  line-height: 0;
+  font-size: 23px;
+  &:hover{
+    color: #a7a7a7;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
+  }
+}
+.button-back{
+  display: inline-block;
+  @extend %ellipsis;
+  border: 0;
+  background: none;
+  font-size: 35px;
+  color: #727272;
+  cursor: pointer;
+  i{
+    font-size: 44px;
+  }
+  i, span{
+    display: inline-block;
+    vertical-align: middle;
+    &:first-child{
+      padding-right: 12px;
+    }
+  }
+  &:hover{
+    color: #000;
+  }
+  @media screen and (max-width: 1480px) {
+    font-size: 25px;
+    i{
+      font-size: 32px;
+    }
+  }
+  @media screen and (max-width: $smTableWidth) {
+    font-size: 20px;
+    i{
+      font-size: 27px;
+    }
+  }
+}

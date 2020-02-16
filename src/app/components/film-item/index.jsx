@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
   addMoviesBookmarks,
-  hasMoviesBookmarks,
   removeMoviesBookmarks,
 } from '../../services/bookmarks';
 import PropTypes from 'prop-types';
@@ -34,7 +33,7 @@ const FilmItem = ({
         <div className="film-poster-action">
           {bookmarks.find( item => item.id == id ) ? (
             <button
-              className="button"
+              className="button button_light"
               onClick={() => {
                 removeMoviesBookmarks(id);
               }}

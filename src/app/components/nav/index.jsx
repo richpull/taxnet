@@ -4,8 +4,8 @@ import { activeNavToggle } from '../../services/history';
 import PropTypes from 'prop-types';
 import '@/styles/scss/nav.scss';
 
-const Nav = ({ location: { search } }) => {
-  if (search !== '') {
+const Nav = ({ location: { pathname } }) => {
+  if (/^\/search/i.test(pathname)) {
     return null;
   }
   const saveActiveLink = match => {
@@ -39,7 +39,7 @@ const Nav = ({ location: { search } }) => {
 };
 Nav.propTypes = {
   location: PropTypes.shape({
-    search: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 };
 export default withRouter(Nav);

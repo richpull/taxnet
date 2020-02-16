@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MovesItem from '../moves-item';
+import MoviesItem from '../movies-item';
 import queryString from 'query-string';
+import reactStringReplace from 'react-string-replace';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
 import Alert from '../alert';
 
 const diff = (left, right) => {
-  return left.every(val => right.includes(val));
+  return left.every(val => right.find(item => item.search(new RegExp(val, 'i')) !== -1));
 };
-const SearchResult = ({ location, movies: { moviesCollection = [], isFetching } }) => {
+const SearchResult = ({ location : {search : search}, movies: { moviesCollection = [], isFetching } }) => {
+  if(search === '') {
+    return null;
+  }
+  const [searchCollectionLimit, setSearchCollectionLimit] = useState(10);
+  let searchResultTotal = -1;
   const { title = '', tags = [] } = queryString.parse(location.search, { arrayFormat: 'bracket' });
-  let results = 0;
   return (
     <>
       <h1 className="all-center">Результаты поиска</h1>
@@ -20,20 +25,33 @@ const SearchResult = ({ location, movies: { moviesCollection = [], isFetching } 
         <div className="movie-die-list">
           {moviesCollection.map((item, index) => {
             if (
-              (title === '' || item.title.toLowerCase().includes(title.toLowerCase())) &&
-              (!tags.length || diff(tags, item.tags))
+              item.title.search(new RegExp(title, 'i')) !== -1 &&
+              (!tags.length || diff(tags, item.tags)) &&
+              (searchResultTotal < searchCollectionLimit)
             ) {
-              results++;
-              return <MovesItem key={index} payload={item} id={index} />;
+              if(++searchResultTotal < searchCollectionLimit){
+                const titleReplace = title === '' ? item.title : reactStringReplace(item.title, title, (match, i) => <b key={i}>{match}</b>);
+                return <MoviesItem key={index} title={titleReplace} tags={item.tags} id={index} />;
+              }
             }
           })}
         </div>
       )}
       {isFetching ? (
         <Loader />
-      ) : !results ? (
+      ) : (searchResultTotal < 0) ? (
         <Alert title="По вашему запросу ничего не найдено :(" />
       ) : null}
+      {(searchResultTotal === searchCollectionLimit) && (
+        <button
+          className="button"
+          onClick={() => {
+            setSearchCollectionLimit(searchCollectionLimit + 10);
+          }}
+        >
+          <span>Показать еще</span>
+        </button>
+      )}
     </>
   );
 };

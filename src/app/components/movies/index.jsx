@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import MovesItem from '../moves-item';
+import MoviesItem from '../movies-item';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
 
@@ -19,7 +19,7 @@ const Movies = ({ movies: { moviesCollection = [], isFetching } }) => {
         <div className="movie-die-list">
           {moviesCollection.map((item, index) => {
             if (index < moviesCollectionLimit) {
-              return <MovesItem key={index} payload={item} id={index} />;
+              return <MoviesItem key={index} title={item.title} tags={item.tags} id={index} />;
             }
           })}
         </div>

@@ -50,7 +50,7 @@ const Search = ({ history, location }) => {
               {tags.map((item, index) => {
                 return (
                   <div className="tag" key={index}>
-                    {item}
+                    #{item}
                   </div>
                 );
               })}
