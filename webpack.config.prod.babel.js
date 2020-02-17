@@ -1,6 +1,4 @@
-import '@babel/polyfill';
 import path from 'path';
-//import webpack from 'webpack';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
@@ -19,7 +17,7 @@ const PATHS = {
 module.exports = {
   devtool: false,
   entry: {
-    main: ['@babel/polyfill', './src/app/index.js', './src/styles/scss/main.scss'],
+    main: ['./src/app/index.js', './src/styles/scss/main.scss'],
   },
   output: {
     path: PATHS.dist,
@@ -34,7 +32,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/react'],
+              plugins: [['@babel/plugin-syntax-dynamic-import'],["transform-react-remove-prop-types", { "mode": "remove", "removeImport" : true, "ignoreFilenames": ["node_modules"]}]],
             },
           },
         ],
@@ -90,7 +88,7 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       'process.env':{
-        'API_DATA_URL': JSON.stringify('data')
+        'API_DATA_URL': JSON.stringify('data'),
       }
     }),
     //new webpack.SourceMapDevToolPlugin({

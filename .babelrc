@@ -4,9 +4,9 @@
       "targets": {
         "node": "current"
       },
-      "useBuiltIns": "entry"
+      "useBuiltIns": "entry",
+      "corejs": 2
     }],
-    "@babel/react"
-  ],
-  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+    "@babel/react",
+  ]
 }

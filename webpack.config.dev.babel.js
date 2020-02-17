@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import webpack from 'webpack';
 import path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -8,7 +7,7 @@ import autoprefixer from 'autoprefixer';
 module.exports = {
   devtool: false,
   entry: {
-    main: ['@babel/polyfill', './src/app/index.js', './src/styles/scss/main.scss'],
+    main: ['./src/app/index.js', './src/styles/scss/main.scss'],
   },
   output: {
     filename: '[name].js',
@@ -39,9 +38,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/react'],
               cacheDirectory: true,
-              plugins: ['react-hot-loader/babel'],
+              plugins: ['@babel/plugin-syntax-dynamic-import'],
             },
           },
         ],

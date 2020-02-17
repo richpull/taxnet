@@ -7,7 +7,6 @@ import reactStringReplace from 'react-string-replace';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
 import Alert from '../alert';
-
 const diff = (left, right) => {
   return left.every(val => right.find(item => item.search(new RegExp(val, 'i')) !== -1));
 };
