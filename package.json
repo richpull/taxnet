@@ -23,10 +23,13 @@
     }
   },
   "lint-staged": {
-    "*.{js, jsx}": [
-      "prettier --write",
-      "git add"
-    ]
+    "linters": {
+      "src/**/*.{js, jsx}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": ["node_modules", "build"]
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

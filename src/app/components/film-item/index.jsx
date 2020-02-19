@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import {
-  addMoviesBookmarks,
-  removeMoviesBookmarks,
-} from '../../services/bookmarks';
+import { addMoviesBookmarks, removeMoviesBookmarks } from '../../services/bookmarks';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
 const FilmItem = ({
@@ -12,7 +9,7 @@ const FilmItem = ({
     params: { id },
   },
   movies: { moviesCollection = [], isFetching },
-  bookmarks
+  bookmarks,
 }) => {
   const { title = false } = moviesCollection[id] || {};
   if (isFetching) {
@@ -31,7 +28,7 @@ const FilmItem = ({
       <div className="film__info">
         <div className="film-title">{title}</div>
         <div className="film-poster-action">
-          {bookmarks.find( item => item.id == id ) ? (
+          {bookmarks.find(item => item.id == id) ? (
             <button
               className="button button_light"
               onClick={() => {
@@ -76,11 +73,11 @@ FilmItem.propTypes = {
       }),
     ),
   }).isRequired,
-  bookmarks : PropTypes.arrayOf(
+  bookmarks: PropTypes.arrayOf(
     PropTypes.shape({
-      id : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
-    })
-  ).isRequired
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    }),
+  ).isRequired,
 };
 const mapStateToProps = state => ({
   movies: state.movies,

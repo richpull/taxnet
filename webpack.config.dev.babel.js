@@ -102,10 +102,10 @@ module.exports = {
       { from: 'data', to: 'data' },
     ]),
     new DotenvPlugin({
-      path: 'env/.env.development'
+      path: 'env/.env.development',
     }),
     new DotenvPlugin({
-      path: 'env/.env.firebase'
+      path: 'env/.env.firebase',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({

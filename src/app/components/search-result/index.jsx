@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MoviesItem from '../movies-item';
@@ -10,8 +10,11 @@ import Alert from '../alert';
 const diff = (left, right) => {
   return left.every(val => right.find(item => item.search(new RegExp(val, 'i')) !== -1));
 };
-const SearchResult = ({ location : {search : search}, movies: { moviesCollection = [], isFetching } }) => {
-  if(search === '') {
+const SearchResult = ({
+  location: { search: search },
+  movies: { moviesCollection = [], isFetching },
+}) => {
+  if (search === '') {
     return null;
   }
   const [searchCollectionLimit, setSearchCollectionLimit] = useState(10);
@@ -26,10 +29,13 @@ const SearchResult = ({ location : {search : search}, movies: { moviesCollection
             if (
               item.title.search(new RegExp(title, 'i')) !== -1 &&
               (!tags.length || diff(tags, item.tags)) &&
-              (searchResultTotal < searchCollectionLimit)
+              searchResultTotal < searchCollectionLimit
             ) {
-              if(++searchResultTotal < searchCollectionLimit){
-                const titleReplace = title === '' ? item.title : reactStringReplace(item.title, title, (match, i) => <b key={i}>{match}</b>);
+              if (++searchResultTotal < searchCollectionLimit) {
+                const titleReplace =
+                  title === ''
+                    ? item.title
+                    : reactStringReplace(item.title, title, (match, i) => <b key={i}>{match}</b>);
                 return <MoviesItem key={index} title={titleReplace} tags={item.tags} id={index} />;
               }
             }
@@ -38,10 +44,10 @@ const SearchResult = ({ location : {search : search}, movies: { moviesCollection
       )}
       {isFetching ? (
         <Loader />
-      ) : (searchResultTotal < 0) ? (
+      ) : searchResultTotal < 0 ? (
         <Alert title="По вашему запросу ничего не найдено :(" />
       ) : null}
-      {(searchResultTotal === searchCollectionLimit) && (
+      {searchResultTotal === searchCollectionLimit && (
         <button
           className="button"
           onClick={() => {

@@ -6,8 +6,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import webpack from "webpack";
-import DotenvPlugin from "dotenv-webpack";
+import webpack from 'webpack';
+import DotenvPlugin from 'dotenv-webpack';
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -33,7 +33,13 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              plugins: [['@babel/plugin-syntax-dynamic-import'],["transform-react-remove-prop-types", { "mode": "remove", "removeImport" : true, "ignoreFilenames": ["node_modules"]}]],
+              plugins: [
+                ['@babel/plugin-syntax-dynamic-import'],
+                [
+                  'transform-react-remove-prop-types',
+                  { mode: 'remove', removeImport: true, ignoreFilenames: ['node_modules'] },
+                ],
+              ],
             },
           },
         ],
@@ -85,13 +91,13 @@ module.exports = {
       { from: 'src/img', to: 'assets/img' },
       { from: 'src/styles/font/', to: `${PATHS.assets}/font` },
       { from: 'data', to: 'data' },
-      { from: 'src/404/', to: '' }
+      { from: 'src/404/', to: '' },
     ]),
     new DotenvPlugin({
-      path: 'env/.env.production'
+      path: 'env/.env.production',
     }),
     new DotenvPlugin({
-      path: 'env/.env.firebase'
+      path: 'env/.env.firebase',
     }),
     new CleanWebpackPlugin([PATHS.dist]),
     new MiniCssExtractPlugin({

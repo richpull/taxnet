@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { toggleMoviesBookmarks } from '../../services/bookmarks';
 import Tag from '../tag';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 const MovesItem = ({ location, tags = [], title = '', id, bookmarks = [] }) => {
   let { search } = location;
   const moviesLink = `/film/${id}`;
@@ -15,8 +15,8 @@ const MovesItem = ({ location, tags = [], title = '', id, bookmarks = [] }) => {
             {title}
           </NavLink>
         </div>
-        {
-          tags.length && <div className="movie-die__body__item">
+        {tags.length && (
+          <div className="movie-die__body__item">
             <div className="tag-group">
               {tags.map((tag, index) => {
                 return (
@@ -32,7 +32,7 @@ const MovesItem = ({ location, tags = [], title = '', id, bookmarks = [] }) => {
               })}
             </div>
           </div>
-        }
+        )}
       </div>
       <div className="movie-die__control">
         <button
@@ -47,7 +47,7 @@ const MovesItem = ({ location, tags = [], title = '', id, bookmarks = [] }) => {
             );
           }}
         >
-          { bookmarks.find( item => item.id == id ) ? (
+          {bookmarks.find(item => item.id == id) ? (
             <i className="icon-bookmark" />
           ) : (
             <i className="icon-bookmark-empty" />
@@ -63,11 +63,11 @@ MovesItem.propTypes = {
   }).isRequired,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  bookmarks : PropTypes.arrayOf(
+  bookmarks: PropTypes.arrayOf(
     PropTypes.shape({
-      id : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
-    })
-  ).isRequired
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    }),
+  ).isRequired,
 };
 const mapStateToProps = state => ({
   bookmarks: state.bookmarks.movies,

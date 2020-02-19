@@ -7,11 +7,15 @@ export const getMovies = () => {
   store.dispatch(async dispatch => {
     try {
       dispatch(getMovesDataStart());
-      const movies = (await firebase.database().ref('/movies').once('value')).val() || [];
-      dispatch(getMovesDataSuccess(Object.keys(movies).map( key => ({ ...movies[key], id:key }) )));
-    } catch (e) {
-      
-    }
+      const movies =
+        (
+          await firebase
+            .database()
+            .ref('/movies')
+            .once('value')
+        ).val() || [];
+      dispatch(getMovesDataSuccess(Object.keys(movies).map(key => ({ ...movies[key], id: key }))));
+    } catch (e) {}
 
     // firebase.database().ref('/movies').once('value').then( data => {
     //   const movies = data.val() || [];
