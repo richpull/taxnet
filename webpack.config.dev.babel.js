@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import DotenvPlugin from 'dotenv-webpack';
 import autoprefixer from 'autoprefixer';
 
 module.exports = {
@@ -100,15 +101,12 @@ module.exports = {
       { from: 'src/styles/font/', to: 'font' },
       { from: 'data', to: 'data' },
     ]),
-    new webpack.DefinePlugin({
-      'process.env':{
-        'API_DATA_URL': JSON.stringify('/data')
-      }
+    new DotenvPlugin({
+      path: 'env/.env.development'
     }),
-    // new webpack.SourceMapDevToolPlugin({
-    //   filename: '[name].js.map',
-    //   exclude: ['bundle.js'],
-    // }),
+    new DotenvPlugin({
+      path: 'env/.env.firebase'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: './index.html',

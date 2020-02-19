@@ -7,6 +7,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import webpack from "webpack";
+import DotenvPlugin from "dotenv-webpack";
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -86,15 +87,12 @@ module.exports = {
       { from: 'data', to: 'data' },
       { from: 'src/404/', to: '' }
     ]),
-    new webpack.DefinePlugin({
-      'process.env':{
-        'API_DATA_URL': JSON.stringify('data'),
-      }
+    new DotenvPlugin({
+      path: 'env/.env.production'
     }),
-    //new webpack.SourceMapDevToolPlugin({
-    //  filename: '[name].js.map',
-    //  exclude: ['bundle.js'],
-    //}),
+    new DotenvPlugin({
+      path: 'env/.env.firebase'
+    }),
     new CleanWebpackPlugin([PATHS.dist]),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[hash].css`,
