@@ -1,8 +1,27 @@
-$mainFontSize            : 18px;
-$mainLineHeight          : 1.4;
-$desktopWidth            : 1280px;
-$smDesktopWidth          : 980px;
-$tableWidth              : 1024px;
-$smTableWidth            : 768px;
-$phoneWidth              : 480px;
-$smPhoneWidth            : 320px;
+
+$desktopWidthX1 : 1920px;
+$tableWidthX1-H : 1024px;
+$tableWidthX1-V : 768px;
+$phoneWidthX1: 468px;
+
+$desktopWidthX1-U : $desktopWidthX1 + 1;
+$tableWidthX1-H-U : $tableWidthX1-H + 1;
+$tableWidthX1-V-U : $tableWidthX1-V + 1;
+$phoneWidthX1-U : $phoneWidthX1 + 1;
+
+$font-size-h1:40px;
+$font-size-h2:24px;
+$font-size-h3:22px;
+$font-size-h4:20px;
+$font-size-h5:18px;
+$font-size-h6:16px;
+$font-size-h1-h6 : $font-size-h1, $font-size-h2, $font-size-h3, $font-size-h4, $font-size-h5, $font-size-h6;
+
+$font-size-html : 62.5%;
+$body-fontSize: 16px;
+$html-lineHeight: 1.2;
+
+/* color */
+$body-backgroundColor : #fff;
+$body-color:#000;
+/* display size */

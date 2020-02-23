@@ -12,17 +12,10 @@
   height: 58px;
   background: none;
   border: 1px solid #707070;
-  @media screen and (max-width: $smTableWidth) {
-    height: 48px;
-  }
 }
 .search__control {
   padding: 0 33px;
   font-size: 25px;
-  @media screen and (max-width: $smTableWidth) {
-    padding: 0 15px;
-    font-size: 20px;
-  }
 }
 .search__control {
   width: 100%;
@@ -53,8 +46,5 @@
   i {
     display: inline-block;
     vertical-align: middle;
-  }
-  @media screen and (max-width: $smTableWidth) {
-    font-size: 20px;
   }
 }

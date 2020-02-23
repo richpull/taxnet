@@ -4,6 +4,8 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import DotenvPlugin from 'dotenv-webpack';
 import autoprefixer from 'autoprefixer';
+import px2rem from 'postcss-plugin-px2rem';
+import px2remConfig from './px2rem.config';
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -77,7 +79,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              plugins: [autoprefixer],
+              plugins: [autoprefixer, px2rem(px2remConfig)],
             },
           },
           {

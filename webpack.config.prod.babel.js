@@ -7,8 +7,10 @@ import TerserPlugin from 'terser-webpack-plugin';
 import ImageMinPlugin from 'imagemin-webpack-plugin';
 import OptimizeCssAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin';
 import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
-//import webpack from 'webpack';
 import DotenvPlugin from 'dotenv-webpack';
+import px2rem from 'postcss-plugin-px2rem';
+import px2remConfig from "./px2rem.config";
+
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -33,16 +35,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            // options: {
-            //   plugins: [
-            //     ['@babel/plugin-syntax-dynamic-import'],
-            //     [
-            //       'transform-react-remove-prop-types',
-            //       { mode: 'remove', removeImport: true, ignoreFilenames: ['node_modules'] },
-            //     ],
-            //   ],
-            // },
+            loader: 'babel-loader'
           },
         ],
       },
@@ -75,6 +68,7 @@ module.exports = {
                     },
                   ],
                 }),
+                px2rem(px2remConfig)
               ]
             },
           },

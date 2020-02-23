@@ -15,6 +15,15 @@
   height: $height;
 }
 
+@mixin headings($from: 1, $to: 6){
+  @for $i from $from through $to{
+    h#{$i}, .h#{$i}{
+      font-size: nth($font-size-h1-h6, $i);
+      @content
+    }
+  }
+}
+
 @mixin placeholder {
   &::-webkit-input-placeholder {@content}
   &:-moz-placeholder           {@content}

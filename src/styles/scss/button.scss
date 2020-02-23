@@ -28,7 +28,7 @@
     line-height: 1;
     vertical-align: middle;
   }
-  @media screen and (max-width: $tableWidth) {
+  @media screen and (max-width: $tableWidthX1-V) {
     padding: 5px 15px;
     height: 45px;
     font-size: 16px;
@@ -51,9 +51,6 @@
   cursor: pointer;
   &:hover {
     color: #a7a7a7;
-  }
-  @media screen and (max-width: 480px) {
-    font-size: 18px;
   }
 }
 .button-back {
@@ -78,16 +75,10 @@
     }
   }
   @extend %ellipsis;
-  @media screen and (max-width: 1480px) {
+  @media screen and (max-width: $tableWidthX1-V-U) {
     font-size: 25px;
     i {
       font-size: 32px;
-    }
-  }
-  @media screen and (max-width: $smTableWidth) {
-    font-size: 20px;
-    i {
-      font-size: 27px;
     }
   }
 }
