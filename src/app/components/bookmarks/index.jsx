@@ -2,14 +2,16 @@ import React from 'react';
 import BookmarksItems from '../bookmarks-item';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-const Bookmarks = ({ bookmarks }) => {
+import { selectBookmarksMoviesCollection } from '../../store/bookmarks/selectors';
+
+const Bookmarks = ({ bookmarksMoviesCollection }) => {
   return (
     <>
-      {bookmarks.length ? (
+      {bookmarksMoviesCollection.length ? (
         <div className="bookmarks-list">
-          {bookmarks.map((item, index) => {
-            return <BookmarksItems key={index} title={item.title} id={item.id} url={item.url} />;
-          })}
+          {bookmarksMoviesCollection.map(film => (
+            <BookmarksItems key={film.id} title={film.title} filmId={film.id} url={film.url} />
+          ))}
         </div>
       ) : (
         <div className="alert">У вас пока нет закладок:(</div>
@@ -18,7 +20,7 @@ const Bookmarks = ({ bookmarks }) => {
   );
 };
 Bookmarks.propTypes = {
-  bookmarks: PropTypes.arrayOf(
+  bookmarksMoviesCollection: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -27,6 +29,6 @@ Bookmarks.propTypes = {
   ).isRequired,
 };
 const mapStateToProps = state => ({
-  bookmarks: state.bookmarks.movies,
+  bookmarksMoviesCollection: selectBookmarksMoviesCollection(state),
 });
 export default connect(mapStateToProps)(Bookmarks);

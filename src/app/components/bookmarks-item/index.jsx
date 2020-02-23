@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { removeMoviesBookmarks } from '../../services/bookmarks';
 import PropTypes from 'prop-types';
 
-const BookmarksItems = ({ title, id, url }) => {
+const BookmarksItems = ({ title, filmId, url }) => {
   return (
     <div className="bookmarks">
       <div className="bookmarks__head">
@@ -12,12 +12,7 @@ const BookmarksItems = ({ title, id, url }) => {
         </NavLink>
       </div>
       <div className="bookmarks__control">
-        <button
-          className="button-bookmark"
-          onClick={() => {
-            removeMoviesBookmarks(id);
-          }}
-        >
+        <button className="button-bookmark" onClick={removeMoviesBookmarks.bind(null, filmId)}>
           <i className="icon-cancel" />
         </button>
       </div>
@@ -26,7 +21,7 @@ const BookmarksItems = ({ title, id, url }) => {
 };
 BookmarksItems.propTypes = {
   title: PropTypes.string.isRequired,
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  filmId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   url: PropTypes.string.isRequired,
 };
 export default BookmarksItems;

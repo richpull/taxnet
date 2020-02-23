@@ -1,32 +1,33 @@
-@import "utils/vars";
-@import "utils/mixins";
-.nav{
+@import '../configuration/vars';
+@import '../mixins/mixins';
+.nav {
   margin-bottom: 37px;
-  text-align: center;
-  line-height: 0;
   display: flex;
   justify-content: center;
-}
-.nav__link{
-  flex-basis: 270px;
-  min-width: 0;
+  line-height: 0;
   text-align: center;
-  line-height: 1;
-  height: 54px;
-  border: 1px solid #707070;
-  font-size: 18px;
-  color: #b2b2b2;
+}
+.nav__link {
   padding: 16px 14px;
-  text-decoration: none;
+  min-width: 0;
+  height: 54px;
   flex-shrink: 2;
-  span{
-    @extend %ellipsis;
-  }
-  &:not(:last-child){
+  flex-basis: 270px;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #b2b2b2;
+  border: 1px solid #707070;
+  &:not(:last-child) {
     border-right-width: 0;
   }
+  span {
+    @extend %ellipsis;
+  }
 }
-.nav__link:hover, .nav__link-isActive{
-  background: #b2b2b2;
+.nav__link:hover,
+.nav__link-isActive {
   color: #fff;
+  background: #b2b2b2;
 }

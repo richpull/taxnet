@@ -1,27 +1,39 @@
-import React, { useState, useRef } from 'react';
-import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+import React, { useRef, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import ButtonBack from '../button-back';
-import PropTypes from 'prop-types';
+import { queryGenerate } from '../../util/queryParser';
+import { selectorSearchGetParams } from '../../store/search/selectors';
 import '@/styles/scss/search.scss';
 
-const Search = ({ history, location }) => {
-  const query = queryString.parse(location.search, { arrayFormat: 'bracket' });
+const searchValidate = (value, tags) => value === '' && !tags.length;
+const Search = () => {
+  const history = useHistory();
+  const fieldSearch = useRef(null);
+  const query = useSelector(selectorSearchGetParams);
   const { title = '', tags = [] } = query;
-  const [search, setSearch] = useState(title);
-  let SearchField = useRef(null);
+  const [search, setSearch] = useState({
+    value: title,
+    error: searchValidate(title, tags),
+  });
+  const disabled = search.error;
   const handleSubmit = event => {
     event.preventDefault();
-    if (search !== '' || tags.length) {
-      history.push({
-        pathname: '/search',
-        search: queryString.stringify(
-          { ...query, title: search },
-          { sort: false, arrayFormat: 'bracket' },
-        ),
-      });
-    }
+    history.push({
+      pathname: '/search',
+      search: queryGenerate(query, { title: search.value }),
+    });
   };
+  const handleChangeFiled = value => {
+    setSearch({ ...search, value: value, error: searchValidate(value, tags) });
+  };
+  const handleRemoveTag = removeTag => {
+    history.push({
+      pathname: '/search',
+      search: queryGenerate(query, { tags: tags.filter(tag => tag !== removeTag) }),
+    });
+  };
+
   return (
     <>
       <div className="app-nav-history">
@@ -33,27 +45,27 @@ const Search = ({ history, location }) => {
         <form onSubmit={handleSubmit}>
           <div className="search">
             <input
-              ref={SearchField}
+              ref={fieldSearch}
               className="search__control"
               placeholder="Поиск..."
               type="text"
-              name="search"
-              defaultValue={title}
-              onChange={e => setSearch(e.target.value)}
+              defaultValue={search.value}
+              onChange={e => handleChangeFiled(e.target.value)}
             />
-            <button className="search__submit" type="submit">
+            <button className="search__submit" disabled={disabled} type="submit">
               <i className="icon-search" />
             </button>
           </div>
           {tags.length > 0 && (
             <div className="tag-group m-1">
-              {tags.map((item, index) => {
-                return (
-                  <div className="tag" key={index}>
-                    #{item}
-                  </div>
-                );
-              })}
+              {tags.map((tag, index) => (
+                <div className="tag" key={index}>
+                  <span>#{tag}</span>
+                  <span onClick={handleRemoveTag.bind(null, tag)} className="tag__remove">
+                    <i className="icon-cancel" />
+                  </span>
+                </div>
+              ))}
             </div>
           )}
         </form>
@@ -61,12 +73,4 @@ const Search = ({ history, location }) => {
     </>
   );
 };
-Search.propTypes = {
-  location: PropTypes.shape({
-    search: PropTypes.string.isRequired,
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-};
-export default withRouter(Search);
+export default Search;

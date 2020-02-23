@@ -6,9 +6,9 @@ import DotenvPlugin from 'dotenv-webpack';
 import autoprefixer from 'autoprefixer';
 
 module.exports = {
-  devtool: false,
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    main: ['./src/app/index.js', './src/styles/scss/main.scss'],
+    main: ['./app/index.js', './styles/scss/main.scss'],
   },
   output: {
     filename: '[name].js',
@@ -23,11 +23,24 @@ module.exports = {
       warnings: true,
       errors: true,
     },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:4000',
+    //   },
+    // },
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss', '.css'],
     alias: {
-      '@': path.resolve(__dirname, './src/'),
+      '@': path.resolve(__dirname, './src'),
+      '@styles': path.resolve(__dirname, './src/styles'),
+      '@img': path.resolve(__dirname, './src/img'),
+      '@store': path.resolve(__dirname, './src/app/store'),
+    },
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
     },
   },
   module: {
@@ -42,6 +55,9 @@ module.exports = {
               cacheDirectory: true,
               plugins: ['@babel/plugin-syntax-dynamic-import'],
             },
+          },
+          {
+            loader: 'eslint-loader',
           },
         ],
       },
@@ -79,7 +95,6 @@ module.exports = {
               name: '[path][name].[ext]',
             },
           },
-          'img-loader',
         ],
       },
       {
@@ -97,9 +112,9 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/img', to: 'img' },
-      { from: 'src/styles/font/', to: 'font' },
-      { from: 'data', to: 'data' },
+      { from: './img', to: 'img' },
+      { from: './styles/font/', to: 'font' },
+      { from: './data', to: 'data' },
     ]),
     new DotenvPlugin({
       path: 'env/.env.development',
@@ -110,7 +125,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './index.html',
     }),
   ],
 };

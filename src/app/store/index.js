@@ -1,12 +1,17 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import rootReducer from './reducers';
+import createRootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { createBrowserHistory } from 'history';
 
+export const history = createBrowserHistory();
 const configureStore = () => {
   if (process.env.NODE_ENV === 'development') {
-    return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+    return createStore(
+      createRootReducer(history),
+      composeWithDevTools(applyMiddleware(thunkMiddleware)),
+    );
   }
-  return createStore(rootReducer, applyMiddleware(thunkMiddleware));
+  return createStore(createRootReducer(history), applyMiddleware(thunkMiddleware));
 };
 export const store = configureStore();

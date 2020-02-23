@@ -1,15 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import App from './components/App.jsx';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { store, history } from './store';
 
 render(
   <Provider store={store}>
-    <Router basename={process.env.APP_ROUTER_BASENAME}>
+    <ConnectedRouter history={history} basename={process.env.APP_ROUTER_BASENAME}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
 );

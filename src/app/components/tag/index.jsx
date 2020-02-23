@@ -1,25 +1,34 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
-const Tag = ({ to, title }) => {
+import { queryParser } from '../../util/queryParser';
+
+const Tag = ({ toSearch, title, location: { search } }) => {
   const handleClick = (event, title) => {
-    const { tags = [] } = queryString.parse(location.search, { arrayFormat: 'bracket' });
-    if (tags.some(v => v === title)) {
+    const { tags = [] } = queryParser(search);
+    if (tags.includes(title)) {
       event.preventDefault();
     }
   };
   return (
-    <NavLink onClick={event => handleClick(event, title)} className="tag" to={to}>
+    <NavLink
+      activeClassName=""
+      onClick={event => handleClick(event, title)}
+      className="tag"
+      to={{
+        pathname: '/search',
+        search: `${search}${toSearch}`,
+      }}
+    >
       <span>#{title}</span>
     </NavLink>
   );
 };
 Tag.propTypes = {
-  to: PropTypes.shape({
+  location: PropTypes.shape({
     search: PropTypes.string.isRequired,
-    pathname: PropTypes.string.isRequired,
   }).isRequired,
+  toSearch: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
-export default Tag;
+export default withRouter(Tag);

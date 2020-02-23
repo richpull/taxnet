@@ -2,10 +2,10 @@
   font-family: 'fontello';
   src: url('../font/fontello.eot?82435427');
   src: url('../font/fontello.eot?82435427#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?82435427') format('woff2'),
-       url('../font/fontello.woff?82435427') format('woff'),
-       url('../font/fontello.ttf?82435427') format('truetype'),
-       url('../font/fontello.svg?82435427#fontello') format('svg');
+    url('../font/fontello.woff2?82435427') format('woff2'),
+    url('../font/fontello.woff?82435427') format('woff'),
+    url('../font/fontello.ttf?82435427') format('truetype'),
+    url('../font/fontello.svg?82435427#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,28 +20,29 @@
 }
 */
 
- [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  margin-right: 0.2em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
 
   display: inline-block;
-  text-decoration: inherit;
-  margin-right: .2em;
-  text-align: center;
+  font-family: 'fontello';
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  font-weight: normal;
+  font-style: normal;
   /* opacity: .8; */
 
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
+  text-align: center;
+  text-decoration: inherit;
   text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
+  speak: none;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -54,10 +55,24 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-bookmark:before { content: '\e800'; } /* '' */
-.icon-flag:before { content: '\e801'; } /* '' */
-.icon-bookmark-empty:before { content: '\e802'; } /* '' */
-.icon-cancel:before { content: '\e803'; } /* '' */
-.icon-search:before { content: '\e809'; } /* '' */
-.icon-left-open:before { content: '\e853'; } /* '' */
-.icon-right-open:before { content: '\e854'; } /* '' */
+.icon-bookmark:before {
+  content: '\e800';
+} /* '' */
+.icon-flag:before {
+  content: '\e801';
+} /* '' */
+.icon-bookmark-empty:before {
+  content: '\e802';
+} /* '' */
+.icon-cancel:before {
+  content: '\e803';
+} /* '' */
+.icon-search:before {
+  content: '\e809';
+} /* '' */
+.icon-left-open:before {
+  content: '\e853';
+} /* '' */
+.icon-right-open:before {
+  content: '\e854';
+} /* '' */

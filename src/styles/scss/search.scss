@@ -1,24 +1,14 @@
-@import "utils/vars";
-@import "utils/mixins";
-.search-form{
+@import '../configuration/vars';
+@import '../mixins/mixins';
+.search-form {
   display: block;
 }
-.search{
-  display: flex;
+.search {
   margin-bottom: 12px;
+  display: flex;
 }
-.search__control{
-  width: 100%;
-  @include placeholder {
-    color: #8f8f8f;
-  }
-  &:focus{
-    @include placeholder {
-      color: #000;
-    }
-  }
-}
-.search__control, .search__submit{
+.search__control,
+.search__submit {
   height: 58px;
   background: none;
   border: 1px solid #707070;
@@ -26,28 +16,43 @@
     height: 48px;
   }
 }
-.search__control{
-  font-size: 25px;
+.search__control {
   padding: 0 33px;
+  font-size: 25px;
   @media screen and (max-width: $smTableWidth) {
-    font-size: 20px;
     padding: 0 15px;
+    font-size: 20px;
   }
 }
-.search__submit{
+.search__control {
+  width: 100%;
+  &:focus {
+    @include placeholder {
+      color: #000;
+    }
+  }
+  @include placeholder {
+    color: #8f8f8f;
+  }
+}
+.search__submit {
   padding: 0 26px;
   font-size: 26px;
-  color: #6f6f6f;
   line-height: 0;
-  cursor: pointer;
+  color: #6f6f6f;
   border-left-width: 0;
-  i{
-    vertical-align: middle;
-    display: inline-block;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
   }
-  &:hover{
-    background: #b2b2b2;
+  &:not(:disabled):hover {
     color: #fff;
+    background: #b2b2b2;
+  }
+  i {
+    display: inline-block;
+    vertical-align: middle;
   }
   @media screen and (max-width: $smTableWidth) {
     font-size: 20px;
