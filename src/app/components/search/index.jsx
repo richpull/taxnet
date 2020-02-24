@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import ButtonBack from '../button-back';
 import { queryGenerate } from '../../util/queryParser';
-import { selectorSearchGetParams } from '../../store/search/selectors';
-import '@/styles/scss/search.scss';
+import { selectorSearchGetParams } from '@store/search/selectors';
+import '@styles/scss/search.scss';
 
 const searchValidate = (value, tags) => value === '' && !tags.length;
 const Search = () => {
@@ -37,9 +37,17 @@ const Search = () => {
   return (
     <>
       <div className="app-nav-history">
-        <div className="app-nav-history__offset">
-          <ButtonBack />
-        </div>
+        <ul className="app-nav-history__offset">
+          <li>
+            <ButtonBack />
+          </li>
+          <li>
+            <Link className='button-back' to='/'>
+              <span>На главную</span>
+              <i className="icon-right-open" />
+            </Link>
+          </li>
+        </ul>
       </div>
       <div className="search-form">
         <form onSubmit={handleSubmit}>
@@ -61,9 +69,7 @@ const Search = () => {
               {tags.map((tag, index) => (
                 <div className="tag" key={index}>
                   <span>#{tag}</span>
-                  <span onClick={handleRemoveTag.bind(null, tag)} className="tag__remove">
-                    <i className="icon-cancel" />
-                  </span>
+                  <i onClick={handleRemoveTag.bind(null, tag)} className="icon-cancel close" />
                 </div>
               ))}
             </div>

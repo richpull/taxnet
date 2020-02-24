@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { store } from '../store';
+import { store } from '@store';
 import { getTagsDataSuccess } from '@store/tags/actions';
 import firebase from '@/firebase';
 

@@ -6,7 +6,7 @@ import Alert from '../alert';
 import {
   selectMoviesCollectionSearchFilter,
   selectMoviesFetching,
-} from '../../store/movies/selectors';
+} from '@store/movies/selectors';
 import PropTypes from 'prop-types';
 
 const SearchResult = ({ searchResultCollection, isFetching }) => {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MoviesItem from '../movies-item';
 import PropTypes from 'prop-types';
 import Loader from '../loader';
-import { selectMoviesCollection, selectMoviesFetching } from '../../store/movies/selectors';
+import { selectMoviesCollection, selectMoviesFetching } from '@store/movies/selectors';
 
 const Movies = ({ moviesCollection = [], isFetching }) => {
   const [moviesCollectionLimit, setMoviesCollection] = useState(10);

@@ -1,12 +1,38 @@
-
 $desktopWidthX1 : 1920px;
-$tableWidthX1-H : 1024px;
-$tableWidthX1-V : 768px;
-$phoneWidthX1: 468px;
-
+$desktopWidthX2 : 1680px;
+$desktopWidthX3 : 1600px;
+$desktopWidthX4 : 1536px;
+$desktopWidthX5 : 1440px;
+$desktopWidthX6 : 1400px;
+$desktopWidthX7 : 1366px;
+$desktopWidthX8 : 1366px;
+$desktopWidthX9 : 1280px;
+$desktopWidthX10 : 1200px;
+$desktopWidthX11 : 1152px;
+$desktopWidthX12 : 1024px;
+// $desktopWidthX.. + 1
 $desktopWidthX1-U : $desktopWidthX1 + 1;
+$desktopWidthX2-U : $desktopWidthX2 + 1;
+$desktopWidthX3-U : $desktopWidthX3 + 1;
+$desktopWidthX4-U : $desktopWidthX4 + 1;
+$desktopWidthX5-U : $desktopWidthX5 + 1;
+$desktopWidthX6-U : $desktopWidthX6 + 1;
+$desktopWidthX7-U : $desktopWidthX7 + 1;
+$desktopWidthX8-U : $desktopWidthX8 + 1;
+$desktopWidthX9-U : $desktopWidthX9 + 1;
+$desktopWidthX10-U : $desktopWidthX10 + 1;
+$desktopWidthX11-U : $desktopWidthX11 + 1;
+$desktopWidthX12-U : $desktopWidthX12 + 1;
+
+
+$tableWidthX1-H : 1024px;
 $tableWidthX1-H-U : $tableWidthX1-H + 1;
+
+$tableWidthX1-V : 768px;
 $tableWidthX1-V-U : $tableWidthX1-V + 1;
+
+
+$phoneWidthX1: 468px;
 $phoneWidthX1-U : $phoneWidthX1 + 1;
 
 $font-size-h1:40px;

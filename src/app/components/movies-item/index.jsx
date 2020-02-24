@@ -4,7 +4,7 @@ import { toggleMoviesBookmarks } from '../../services/bookmarks';
 import Tag from '../tag';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { selectBookmarksMoviesFindById } from '../../store/bookmarks/selectors';
+import { selectBookmarksMoviesFindById } from '@store/bookmarks/selectors';
 
 const MovesItem = ({ tags = [], title = '', filmId }) => {
   const isBookmarks = useSelector(selectBookmarksMoviesFindById(filmId));

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { activeNavToggle } from '../../services/history';
 import PropTypes from 'prop-types';
-import '@/styles/scss/nav.scss';
+import '@styles/scss/nav.scss';
 
 const Nav = ({ location: { pathname } }) => {
   if (/^\/search/i.test(pathname)) {

@@ -1,6 +1,6 @@
-import { store } from '../store';
+import { store } from '@store';
+import { getMoviesBookmarksDataSuccess } from '@store/bookmarks/actions';
 import { LocalStore } from './localStorage';
-import { getMoviesBookmarksDataSuccess } from '../store/bookmarks/actions';
 export const getMoviesBookmarks = () => {
   const { moviesBookmarks } = LocalStore.get();
   store.dispatch(getMoviesBookmarksDataSuccess(moviesBookmarks));
