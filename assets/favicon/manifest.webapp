@@ -3,9 +3,9 @@
   "name": "my-app",
   "description": "My awesome App",
   "icons": {
-    "60": "assets/favicon/assets/firefox_app_60x60.png",
-    "128": "assets/favicon/assets/firefox_app_128x128.png",
-    "512": "assets/favicon/assets/firefox_app_512x512.png"
+    "60": "assets/favicon/firefox_app_60x60.png",
+    "128": "assets/favicon/firefox_app_128x128.png",
+    "512": "assets/favicon/firefox_app_512x512.png"
   },
   "developer": {
     "name": "Me",
