@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import createRootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
-export const history = createBrowserHistory();
+export const history = createBrowserHistory({ basename: process.env.APP_ROUTER_BASENAME });
 const configureStore = () => {
   if (process.env.NODE_ENV === 'development') {
     return createStore(

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cross-env BABEL_ENV=development webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
-    "build": "cross-env BABEL_ENV=production webpack --mode production --config webpack.config.prod.babel.js",
+    "dev": "cross-env BABEL_ENV=development webpack-dev-server --config webpack.config.dev.babel.js --open",
+    "build": "cross-env BABEL_ENV=production webpack --config webpack.config.prod.babel.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eslint": "eslint --debug src/",

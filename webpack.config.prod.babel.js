@@ -11,14 +11,15 @@ import DotenvPlugin from 'dotenv-webpack';
 import px2rem from 'postcss-plugin-px2rem';
 import px2remConfig from "./px2rem.config";
 
-
 const PATHS = {
   src: path.join(__dirname, '../src'),
   dist: path.join(__dirname, './build'),
   assets: 'assets/',
+  prefix : '/taxnet'
 };
 
 module.exports = {
+  mode : "production",
   devtool: false,
   context: path.resolve(__dirname, 'src'),
   entry: {
@@ -49,7 +50,7 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: false, url: false }, // url: false - relative urls
+            options: { sourceMap: false, url: true }, // url: false - relative urls
           },
           {
             loader: 'postcss-loader',
@@ -84,7 +85,8 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/img/[name][hash].[ext]',
+              name: 'assets/[path][name][hash].[ext]',
+              publicPath: `${PATHS.prefix}/`
             },
           },
         ],
@@ -154,7 +156,9 @@ module.exports = {
         logo: './favicon/logo.svg',
         mode: 'webapp', // optional can be 'webapp' or 'light' - 'webapp' by default
         devMode: 'webapp', // optional can be 'webapp' or 'light' - 'light' by default
+        publicPath: 'assets',
         outputPath: 'assets/favicon',
+        prefix: 'favicon/',
         favicons: {
           appName: 'my-app',
           appDescription: 'My awesome App',

@@ -7,7 +7,7 @@ import { store, history } from './store';
 
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history} basename={process.env.APP_ROUTER_BASENAME}>
+    <ConnectedRouter history={history}>
       <App />
     </ConnectedRouter>
   </Provider>,

@@ -8,6 +8,7 @@ import px2rem from 'postcss-plugin-px2rem';
 import px2remConfig from './px2rem.config';
 
 module.exports = {
+  mode: "development",
   context: path.resolve(__dirname, 'src'),
   entry: {
     main: ['./app/index.js', './styles/scss/main.scss'],
