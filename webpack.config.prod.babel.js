@@ -51,7 +51,7 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { modules: true, importLoaders: 1, sourceMap: false, url: false }, // url: false - relative urls
+            options: { sourceMap: false, url: false }, // url: false - relative urls
           },
           {
             loader: 'postcss-loader',
