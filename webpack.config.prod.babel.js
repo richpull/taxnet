@@ -28,6 +28,7 @@ module.exports = {
   output: {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].[hash].js`,
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -50,7 +51,7 @@ module.exports = {
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: false, url: true }, // url: false - relative urls
+            options: { modules: true, importLoaders: 1, sourceMap: false, url: false }, // url: false - relative urls
           },
           {
             loader: 'postcss-loader',
@@ -116,7 +117,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, './src/img/static'), to: 'assets/img/static' }, // no import js
+      //{ from: path.resolve(__dirname, './src/img'), to: 'assets/img' }, // js images
+      { from: path.resolve(__dirname, './src/styles/img'), to: 'assets/img' }, // css images
       { from: path.resolve(__dirname, './src/styles/font'), to: `${PATHS.assets}/font` },
       { from: path.resolve(__dirname, './src/data'), to: 'data' },
       { from: path.resolve(__dirname, './src/404'), to: '' },

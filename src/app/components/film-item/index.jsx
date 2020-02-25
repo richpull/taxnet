@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { addMoviesBookmarks, removeMoviesBookmarks } from '../../services/bookmarks';
 import { selectMoviesFetching, selectMoviesFilmById } from '../../store/movies/selectors';
 import { selectBookmarksMoviesFindById } from '../../store/bookmarks/selectors';
-import poster from '@img/js/poster.png';
+import poster from '@img/poster.png';
 
 import PropTypes from 'prop-types';
 import Loader from '../loader';
