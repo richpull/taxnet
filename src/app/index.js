@@ -5,6 +5,8 @@ import App from './components/App.jsx';
 import { Provider } from 'react-redux';
 import { store, history } from './store';
 
+
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>

@@ -1,23 +1,26 @@
+
 @import '../configuration/vars';
 @import '../mixins/mixins';
-.search-form {
+
+
+.SearchForm {
   display: block;
 }
-.search {
+.Search {
   margin-bottom: 12px;
   display: flex;
 }
-.search__control,
-.search__submit {
+.Search__control,
+.Search__submit {
   height: 58px;
   background: none;
   border: 1px solid #707070;
 }
-.search__control {
+.Search__control {
   padding: 0 33px;
   font-size: 25px;
 }
-.search__control {
+.Search__control {
   width: 100%;
   &:focus {
     @include placeholder {
@@ -28,7 +31,7 @@
     color: #8f8f8f;
   }
 }
-.search__submit {
+.Search__submit {
   padding: 0 26px;
   font-size: 26px;
   line-height: 0;

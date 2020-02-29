@@ -12,7 +12,7 @@ const BookmarksItems = ({ title, filmId, url }) => {
         </NavLink>
       </div>
       <div className="bookmarks__control">
-        <button className="button-bookmark" onClick={removeMoviesBookmarks.bind(null, filmId)}>
+        <button title="Удалить фильм" className="button-bookmark" onClick={removeMoviesBookmarks.bind(null, filmId)}>
           <i className="icon-cancel" />
         </button>
       </div>

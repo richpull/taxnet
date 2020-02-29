@@ -30,6 +30,7 @@ const MovesItem = ({ tags = [], title = '', filmId }) => {
       <div className="movie-die__control">
         <button
           className="button-bookmark"
+          title={isBookmarks ? 'Удалить фильм из закладок' : 'Добавить фильм в закладки'}
           onClick={toggleMoviesBookmarks.bind(
             null,
             {

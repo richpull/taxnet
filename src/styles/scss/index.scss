@@ -1,17 +1,17 @@
 /* css reset & css normalize */
-@import url(~css-reset-and-normalize);
+@import '~css-reset-and-normalize';
 
 /* scss vars */
 @import '../configuration/vars';
 
 /* scss mixins */
 @import '../mixins/mixins';
-
 /* css-libs */
-@import url('../css-libs/fontello.css');
+
+@import '../css-libs/fontello.css';
 
 /* Application scss */
-@import 'application';
 
+@import 'application';
 
 

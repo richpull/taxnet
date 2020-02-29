@@ -4,7 +4,8 @@ import { useHistory, Link } from 'react-router-dom';
 import ButtonBack from '../button-back';
 import { queryGenerate } from '../../util/queryParser';
 import { selectorSearchGetParams } from '@store/search/selectors';
-import '@styles/scss/search.scss';
+
+import style from '@styles/scss/search.module';
 
 const searchValidate = (value, tags) => value === '' && !tags.length;
 const Search = () => {
@@ -49,18 +50,19 @@ const Search = () => {
           </li>
         </ul>
       </div>
-      <div className="search-form">
+      <div className={style.SearchForm}>
         <form onSubmit={handleSubmit}>
-          <div className="search">
+          <div className={style.Search}>
             <input
               ref={fieldSearch}
-              className="search__control"
+              className={style.Search__control}
               placeholder="Поиск..."
               type="text"
               defaultValue={search.value}
               onChange={e => handleChangeFiled(e.target.value)}
+              aria-labelledby="Поиск фильмов ..."
             />
-            <button className="search__submit" disabled={disabled} type="submit">
+            <button aria-label="Найти" className={style.Search__submit} disabled={disabled} type="submit">
               <i className="icon-search" />
             </button>
           </div>
@@ -69,7 +71,7 @@ const Search = () => {
               {tags.map((tag, index) => (
                 <div className="tag" key={index}>
                   <span>#{tag}</span>
-                  <i onClick={handleRemoveTag.bind(null, tag)} className="icon-cancel close" />
+                  <i title="Удалить" onClick={handleRemoveTag.bind(null, tag)} className="icon-cancel close" />
                 </div>
               ))}
             </div>

@@ -1,13 +1,13 @@
 @import '../configuration/vars';
 @import '../mixins/mixins';
-.nav {
+.Nav {
   margin-bottom: 37px;
   display: flex;
   justify-content: center;
   line-height: 0;
   text-align: center;
 }
-.nav__link {
+.Nav__link {
   padding: 16px 14px;
   min-width: 0;
   height: 54px;
@@ -26,8 +26,8 @@
     @extend %ellipsis;
   }
 }
-.nav__link:hover,
-.nav__link-isActive {
+.Nav__link:hover,
+.Nav__link-isActive {
   color: #fff;
   background: #b2b2b2;
 }
