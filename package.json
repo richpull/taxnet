@@ -9,8 +9,8 @@
     "deploy": "gh-pages -d build",
     "eslint": "eslint --debug src/",
     "eslint-fix": "eslint --debug src/ --fix",
-    "lint:style": "stylelint --ignore-path '.stylelintignore' \"{src/styles/**/*,*}.{css,scss}\"",
-    "format:style": "prettier --write \"{src/styles/**/*,*}.{css,scss}\" && stylelint --ignore-path '.stylelintignore' \"{src/styles/**/*,*}.{css,scss}\" --fix",
+    "lint:style": "stylelint \"{src/styles/**/*,*}.{css,scss}\"",
+    "format:style": "prettier --write \"{src/styles/**/*,*}.{css,scss}\" && stylelint \"{src/styles/**/*,*}.{css,scss}\" --fix",
     "format:prettier": "prettier --write {src/**/*,*}.{js,jsx}"
   },
   "private": true,
@@ -27,26 +27,19 @@
     }
   },
   "lint-staged": {
-    "linters": {
-      "./src/**/*.{js,jsx}": [
-        "prettier --write",
-        "git add"
-      ],
-      "/src/styles/**/*.css": [
-        "prettier --write",
-        "stylelint --fix",
-        "git add"
-      ],
-      "/src/styles/**/*.scss": [
-        "prettier --write",
-        "stylelint --fix --syntax=scss",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "node_modules",
-      "build",
-      "src/styles/mixins"
+    "*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/styles/css/**/*.css": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "src/styles/scss/**/*.scss": [
+      "prettier --write",
+      "stylelint --fix --syntax=scss",
+      "git add"
     ]
   },
   "devDependencies": {
@@ -82,7 +75,7 @@
     "html-webpack-plugin": "^4.0.0-beta.11",
     "husky": "^4.2.3",
     "imagemin-webpack-plugin": "^2.4.2",
-    "lint-staged": "^10.0.7",
+    "lint-staged": "^10.0.8",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

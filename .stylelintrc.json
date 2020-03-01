@@ -1,9 +1,9 @@
-module.exports = {
+{
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-prettier"
   ],
-  "ignoreFiles": "src/styles/utils/**",
+  "ignoreFiles": ["node_modules", "src/styles/css-libs/**/*.css", "src/styles/scss-libs/**/*.scss", "src/styles/mixins/**/*.scss"],
   "plugins": [
     "stylelint-scss",
     "stylelint-order"
@@ -12,9 +12,6 @@ module.exports = {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "no-duplicate-selectors": null,
-//    "at-rule-no-unknown": [true, {
-//      "ignoreAtRules": ["function", "if", "each", "include", "mixin"]
-//    }],
     "order/order": [
       "declarations",
       {

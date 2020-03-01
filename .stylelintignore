@@ -1,6 +1,0 @@
-node_modules
-dist
-build
-/src/styles/css-libs/**/*
-/src/styles/scss-libs/**/*
-/src/styles/mixins/**/*
