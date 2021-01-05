@@ -100,7 +100,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.7.0",
     "css-reset-and-normalize": "^2.1.0",
     "firebase": "^7.8.2",
